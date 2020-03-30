@@ -31,7 +31,7 @@ The code in this repository conforms to standards set by the following tools:
 
 - flake8_ for style checks
 - flake8-black_ for code formatting
-- `flake8-isort`_ for import ordering
+- flake8-isort_ for import ordering
 - mypy_ for static type checking (for Python3.6+)
 
 .. _flake8: http://flake8.pycqa.org/en/latest/

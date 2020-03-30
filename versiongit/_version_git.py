@@ -42,9 +42,6 @@ def get_version_from_git(path=None):
             else:
                 # No tag, just sha1
                 sha1 = out
-    # Replace dashes in tag for dots
-    # Remove this line when we stop supporting python 2.7
-    tag = tag.replace("-", ".")
     if plus != "0" or suffix:
         # Not on a tag, add additional info
         tag = "%(tag)s+%(plus)s.g%(sha1)s%(suffix)s" % locals()
