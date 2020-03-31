@@ -1,50 +1,53 @@
-VersionGit
-==========
+dls_python3_template_module
+===========================
 
 |build_status| |coverage| |pypi_version| |readthedocs|
 
-VersionGit is a tool for managing the version number of Python modules, removing
-the need to update an embedded version string whenever a Git tag is made, and
-providing sensible development version numbers too. It does this by storing a
-single file in the source repo that reads the version from ``git describe`` or
-``git archive`` keywords. At build time, this file is modified in the
-distribution to contain a static version number to be used in preference to
-this. This tool is inspired by versioneer_, but has a vastly reduced feature set
-so that the code stored in each module is minimal.
+This template contains recommended features for Python3 modules 
+including versiongit - a tool for managing versioning, as well 
+as various code styling checks.
 
-Documentation
--------------
+When pushing your repo, this module will perform the following 
+checks on your code, tests and documentation:
 
-Full documentation is available at http://versiongit.readthedocs.org
+- flake8_ for style checks
+- flake8-black_ for code formatting
+- flake8-isort_ for import ordering
+- mypy_ for static type checking
 
-Source Code
------------
+In order to disable these features, you will need to remove the
+appropriate items from the list of [dev-packages] in the Pipfile, 
+as well as the corresponding sections in setup.cfg.
+.. Note::
+    To remove all checks, delete the [isort] and [flake8]
+    sections as well as the --flake8 and --mypy flags from the
+    pytest section.
 
-Available from https://github.com/dls-controls/versiongit
 
-Installation
-------------
+Deploying to pypi
+-----------------
 
-To install the latest release, type::
+You will need to add the following to the end of the module's .travis.yml file.
 
-    pip install versiongit
+.. code-block:: yaml
 
-Changelog
----------
+    deploy:
+      provider: pypi
+      username: {username}
+      password:
+        secure: {secure_password}
+      # Only deploy if something else in the matrix hasn't already done the sdist/wheel
+      skip_existing: true
+      on:
+        tags: true
+      # opt in to dpl v2
+      edge: true
 
-See CHANGELOG_
+For instructions on how to create a secure key, 
+There is a script that will automatically append this entire deploy
+section to your .travis.yml, including generating a secure
+password for your repository.  
 
-Contributing
-------------
-
-See CONTRIBUTING_
-
-License
--------
-To make VersionGit easier to embed, all its code is dedicated to the public
-domain. The ``_version_git.py`` that it creates is also in the public domain.
-Specifically, both are released under the Creative Commons
-"Public Domain Dedication" license (CC0-1.0), as described in LICENSE_
 
 .. |build_status| image:: https://travis-ci.org/dls-controls/versiongit.svg?branch=master
     :target: https://travis-ci.org/dls-controls/versiongit
@@ -62,14 +65,5 @@ Specifically, both are released under the Creative Commons
     :target: http://versiongit.readthedocs.org
     :alt: Documentation
 
-.. _versioneer:
-    https://github.com/warner/python-versioneer
-
-.. _CHANGELOG:
-    https://github.com/dls-controls/versiongit/blob/master/CHANGELOG.rst
-
-.. _CONTRIBUTING:
-    https://github.com/dls-controls/versiongit/blob/master/CONTRIBUTING.rst
-
 .. _LICENSE:
-    https://github.com/dls-controls/versiongit/blob/master/LICENSE
+    https://github.com/niamhdougan/dls_python3_template_module/blob/master/LICENSE
