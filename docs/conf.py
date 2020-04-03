@@ -15,19 +15,23 @@ import sys
 
 sys.path.insert(0, os.path.abspath(os.path.join(__file__, "..", "..")))
 
-import versiongit  # noqa
+import dls_python3_template_module  # noqa
 
 # -- General configuration ------------------------------------------------
 
 # General information about the project.
-project = "versiongit"
-copyright = "2019, Diamond Light Source"
-author = "Tom Cobb"
+project = "dls_python3_template_module"
+copyright = "2020, Diamond Light Source"
+author = "Niamh Dougan"
 
 # The short X.Y version.
-version = versiongit.__version__.split("+")[0]
+version = dls_python3_template_module.__version__.split("+")[0]
 # The full version, including alpha/beta/rc tags.
-release = versiongit.__version__
+release = dls_python3_template_module.__version__
+
+if os.environ.get('READTHEDOCS') == 'True':
+    # Readthedocs modifies conf.py, so will appear dirty when it isn't
+    release = release.replace(".dirty", "")
 
 extensions = [
     # Use this for generating API docs
