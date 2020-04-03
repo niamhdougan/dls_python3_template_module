@@ -8,15 +8,15 @@ involves big changes, please file a ticket before making a pull request! We
 want to make sure you don't spend your time coding something that might not fit
 the scope of the project.
 
-.. _dls_controls repository: https://github.com/dls-controls/versiongit/issues
+.. _temporary_personal_repository: https://github.com/niamhdougan/dls_python3_template_module/issues
 
 Running the tests
 -----------------
 
 To get the source source code and run the unit tests, run::
 
-    $ git clone git://github.com/dls-controls/versiongit.git
-    $ cd versiongit
+    $ git clone git://github.com/niamhdougan/dls_python3_template_module.git
+    $ cd dls_python3_template_module
     $ pipenv install --dev
     $ pipenv run tests
 
@@ -43,6 +43,10 @@ These tests will be run on code when running ``pipenv run tests`` and also
 automatically at check in. Please read the tool documentation for details
 on how to fix the errors it reports.
 
+In order to disable these features, you will need to remove the
+appropriate items from the list of [dev-packages] in the Pipfile,
+as well as the corresponding sections and pytest flags in setup.cfg.
+
 Documentation
 -------------
 
@@ -65,6 +69,32 @@ You can build the docs from the project directory by running::
 
     $ pipenv run docs
     $ firefox build/html/index.html
+
+Deploying to Pypi
+-----------------
+
+You will need to add the following to the end of the module's .travis.yml file.
+
+.. code-block:: yaml
+
+    deploy:
+      provider: pypi
+      username: {username}
+      password:
+        secure: {secure_password}
+      # Only deploy if something else in the matrix hasn't already done the sdist/wheel
+      skip_existing: true
+      on:
+        tags: true
+      # opt in to dpl v2
+      edge: true
+
+For instructions on how to create a secure key, see this confluence page:
+https://confluence.diamond.ac.uk/display/CNTRLS/Deploying+to+PyPi+using+Travis
+
+Alternatively, there is a script that will automatically append this entire
+deploy section to your .travis.yml, including generating a secure password
+for your repository.
 
 Release Checklist
 -----------------
