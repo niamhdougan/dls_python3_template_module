@@ -1,11 +1,11 @@
 API
 ===
 
-This is the internal API reference for versiongit
+This is the internal API reference for dls_python3_template_module
 
-.. automodule:: versiongit
+.. automodule:: dls_python3_template_module
 
-.. automodule:: versiongit._version_git
+.. automodule:: dls_python3_template_module._version_git
 
-.. automodule:: versiongit.command
+.. automodule:: dls_python3_template_module.command
 

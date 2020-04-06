@@ -7,8 +7,8 @@ from tempfile import mkdtemp
 
 from mock import Mock, patch
 
-import versiongit
-from versiongit._version_git import get_cmdclass
+import dls_python3_template_module
+from dls_python3_template_module._version_git import get_cmdclass
 
 TOP = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 
@@ -31,7 +31,7 @@ class TempRepo:
     def version(self, d=None):
         if d is None:
             d = self.dir
-        version = versiongit._version_git.get_version_from_git(d)
+        version = dls_python3_template_module._version_git.get_version_from_git(d)
         return version
 
     def make_dirty(self):
@@ -59,7 +59,7 @@ class TempArchive:
             z.extractall(self.dir)
 
     def change_version(self, sha1, ref_names="HEAD -> master, github/master"):
-        path = os.path.join(self.dir, "versiongit", "_version_git.py")
+        path = os.path.join(self.dir, "dls_python3_template_module", "_version_git.py")
         with open(path) as f:
             lines = f.readlines()
         for i, line in enumerate(lines):
@@ -72,7 +72,7 @@ class TempArchive:
             f.writelines(lines)
 
     def version(self):
-        script = os.path.join(self.dir, "versiongit", "command.py")
+        script = os.path.join(self.dir, "dls_python3_template_module", "command.py")
         version = check_output([sys.executable, script, "--version"]).decode().strip()
         return version
 
@@ -92,7 +92,7 @@ def test_tmp_doesnt_have_a_dot_git_dir():
 
 
 def test_current_version_exists_and_is_str():
-    version = versiongit.__version__
+    version = dls_python3_template_module.__version__
     assert str(version) == version
 
 
@@ -140,7 +140,7 @@ def bad_git(cmd, **kwargs):
     return check_output(cmd, **kwargs)
 
 
-@patch("versiongit._version_git.check_output", bad_git)
+@patch("dls_python3_template_module._version_git.check_output", bad_git)
 def test_no_git_errors(capsys):
     with TempRepo("master") as repo:
         repo.checkout("b4b6df8")
@@ -161,19 +161,19 @@ def test_archive_versions():
         assert "0+untagged.gb9222df" == archive.version()
 
 
-@patch("versiongit._version_git.GIT_REFS", "tag: 0.1")
-@patch("versiongit._version_git.GIT_SHA1", "1234567")
+@patch("dls_python3_template_module._version_git.GIT_REFS", "tag: 0.1")
+@patch("dls_python3_template_module._version_git.GIT_SHA1", "1234567")
 def test_mocked_ref_archive_versions(tmpdir):
-    assert versiongit._version_git.get_version_from_git(tmpdir) == (
+    assert dls_python3_template_module._version_git.get_version_from_git(tmpdir) == (
         "0.1",
         "1234567",
         None,
     )
 
 
-@patch("versiongit._version_git.GIT_SHA1", "1234567")
+@patch("dls_python3_template_module._version_git.GIT_SHA1", "1234567")
 def test_mocked_hash_archive_versions(tmpdir):
-    assert versiongit._version_git.get_version_from_git(tmpdir) == (
+    assert dls_python3_template_module._version_git.get_version_from_git(tmpdir) == (
         "0+untagged.g1234567",
         "1234567",
         None,
@@ -195,8 +195,8 @@ def test_cmdclass_buildpy(tmpdir):
 
     b_inst.run()
     expected = "GIT_SHA1 = '%s'\nGIT_REFS = 'tag: %s'\n" % (
-        versiongit._version_git.git_sha1,
-        versiongit.__version__,
+        dls_python3_template_module._version_git.git_sha1,
+        dls_python3_template_module.__version__,
     )
     assert expected == tmpdir.join("tst", "_version_git.py").read()
     assert b_inst.has_been_run
@@ -216,8 +216,8 @@ def test_cmdclass_sdist(tmpdir):
 
     b_inst.make_release_tree(str(tmpdir), [])
     expected = "blah\nGIT_SHA1 = '%s'\nGIT_REFS = 'tag: %s'\n" % (
-        versiongit._version_git.git_sha1,
-        versiongit.__version__,
+        dls_python3_template_module._version_git.git_sha1,
+        dls_python3_template_module.__version__,
     )
     assert expected == tmpdir.join("tst", "_version_git.py").read()
     assert b_inst.run_with_args == (tmpdir, [])

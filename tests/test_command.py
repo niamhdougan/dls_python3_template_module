@@ -3,8 +3,8 @@ import sys
 import pytest
 from mock import patch
 
-import versiongit
-from versiongit.command import main
+import dls_python3_template_module
+from dls_python3_template_module.command import main
 
 
 def test_no_command_args():
