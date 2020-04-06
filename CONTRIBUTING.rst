@@ -2,7 +2,7 @@ Contributing
 ============
 
 Contributions and issues are most welcome! All issues and pull requests are
-handled through github on the `dls_controls repository`_. Also, please check for
+handled through github on the `_temporary_personal_repository`_. Also, please check for
 any existing issues before filing a new one. If you have a great idea but it
 involves big changes, please file a ticket before making a pull request! We
 want to make sure you don't spend your time coding something that might not fit
