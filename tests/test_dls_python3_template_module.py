@@ -14,7 +14,7 @@ def setupcfg():
 
 @pytest.fixture
 def readme():
-    readme_file = os.path.abspath("../README.rst")
+    readme_file = os.path.abspath("README.rst")
     with open(readme_file, 'r') as f:
         contents = f.read().replace('\n', ' ')
     return contents
