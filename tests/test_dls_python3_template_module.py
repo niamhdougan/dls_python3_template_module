@@ -1,3 +1,4 @@
+import os
 import pytest
 
 
@@ -11,6 +12,14 @@ def setupcfg():
     return conf['metadata']
 
 
+@pytest.fixture
+def readme():
+    readme_file = os.path.abspath("../README.rst")
+    with open(readme_file, 'r') as f:
+        contents = f.read().replace('\n', ' ')
+    return contents
+
+# setup.cfg
 def test_module_name(setupcfg):
     assert setupcfg['name'] != 'dls_python3_template_module', \
         "Did you remember to change the module name in setup.cfg?"
@@ -41,7 +50,6 @@ def test_module_author_email_set(setupcfg):
 
 
 # Docs
-
 def test_docs_boilerplate_removed():
     pass
 
@@ -49,8 +57,9 @@ def test_docs_boilerplate_removed():
 def test_docs_conf_general_info_changed():
     pass
 
+
 # README
-
-
-def test_changed_README():
-    pass
+def test_changed_README(readme):
+    if "dls_python3_template_module" in readme:
+        assert False, "Please change the README to include information"\
+            "about your module."
