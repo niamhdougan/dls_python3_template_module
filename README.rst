@@ -18,18 +18,10 @@ Available from http://github.com/niamhdougan/dls_python3_template_module
 
 Installation
 ------------
-To install the latest release, type::
 
-    pip install dls_python3_template_module
+To start using this template::
 
-To install the latest code directly from source, type::
-
-    pip install git+git://github.com/niamhdougan/dls_python3_template_module.git
-
-Changelog
----------
-
-See `CHANGELOG`_
+    git clone https://github.com/niamhdougan/dls_python3_template_module
 
 Contributing
 ------------

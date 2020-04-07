@@ -95,12 +95,3 @@ https://confluence.diamond.ac.uk/display/CNTRLS/Deploying+to+PyPi+using+Travis
 Alternatively, there is a script that will automatically append this entire
 deploy section to your .travis.yml, including generating a secure password
 for your repository.
-
-Release Checklist
------------------
-
-Before a new release, please go through the following checklist:
-
-* Add a release note in CHANGELOG.rst
-* Git tag the version with message from CHANGELOG
-* Push to github and travis will make a release on pypi
