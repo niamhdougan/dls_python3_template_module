@@ -19,14 +19,15 @@ def test_command_version(capsys):
         main()
     out, err = capsys.readouterr()
     assert not err
-    assert out.strip() == versiongit.__version__
+    assert out.strip() == dls_python3_template_module.__version__
 
 
 def test_command_add_blank(capsys, tmpdir):
     with patch("sys.argv", [sys.argv[0], str(tmpdir.mkdir("pkg"))]):
         main()
     lines = tmpdir.join("pkg", "_version_git.py").read().splitlines()
-    assert lines[3].startswith("# versiongit-%s" % versiongit.__version__)
+    assert lines[3].startswith("# dls_python3_template_module-%s" % \
+        dls_python3_template_module.__version__)
     assert lines[11] == 'GIT_SHA1 = "$Format:%h$"'
     out, err = capsys.readouterr()
     assert not err
@@ -115,7 +116,8 @@ setup(
     with patch("sys.argv", [sys.argv[0], str(pkg_dir)]):
         main()
     lines = tmpdir.join("pkg", "_version_git.py").read().splitlines()
-    assert lines[3].startswith("# versiongit-%s" % versiongit.__version__)
+    assert lines[3].startswith("# dls_python3_template_module-%s" % \
+        dls_python3_template_module.__version__)
     out, err = capsys.readouterr()
     assert not err
     assert out == "Added %s/_version_git.py\n\n" % pkg_dir
