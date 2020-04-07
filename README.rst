@@ -6,6 +6,40 @@ dls_python3_template_module
 This is a template module for Python3 projects, containing recommended features
 for code styling checks and versioning.
 
+Documentation
+-------------
+
+Full documentation is available at http://dls_python3_template_module.readthedocs.org
+
+Source Code
+-----------
+
+Available from http://github.com/niamhdougan/dls_python3_template_module
+
+Installation
+------------
+To install the latest release, type::
+
+    pip install dls_python3_template_module
+
+To install the latest code directly from source, type::
+
+    pip install git+git://github.com/niamhdougan/dls_python3_template_module.git
+
+Changelog
+---------
+
+See `CHANGELOG`_
+
+Contributing
+------------
+
+See `CONTRIBUTING`_
+
+License
+-------
+APACHE License. (see `LICENSE`_)
+
 
 .. |build_status| image:: https://travis-ci.org/niamhdougan/dls_python3_template_module.svg?branch=master
     :target: https://travis-ci.org/niamhdougan/dls_python3_template_module

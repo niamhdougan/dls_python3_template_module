@@ -22,7 +22,7 @@ import dls_python3_template_module  # noqa
 # General information about the project.
 project = "dls_python3_template_module"
 copyright = "2020, Diamond Light Source"
-author = "Niamh Dougan"
+author = "author"
 
 # The short X.Y version.
 version = dls_python3_template_module.__version__.split("+")[0]
