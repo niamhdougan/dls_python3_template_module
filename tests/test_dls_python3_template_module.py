@@ -58,8 +58,8 @@ def test_module_name(setupcfg):
 
 def test_module_description(setupcfg):
     assert setupcfg['description'] != \
-        'Python3 template including some recommended code styling',\
-        "Please write a description for your module."
+        'Python3 template including recommended code styling and versioning',\
+            "Please write a description for your module."
 
 
 def test_module_url(setupcfg):
@@ -69,15 +69,19 @@ def test_module_url(setupcfg):
 
 
 def test_module_author_set(setupcfg):
-    if setupcfg['author'] in setupcfg:
+    if setupcfg['author']:
         assert setupcfg['author'] != 'Author',\
             "Please add an author."
+    else:
+        "Please add an author field to setup.cfg"
 
 
 def test_module_author_email_set(setupcfg):
-    if setupcfg['author_email'] in setupcfg:
+    if setupcfg['author_email']:
         assert setupcfg['author_email'] != 'author@diamond.ac.uk',\
-            "Please add an author email."
+            "Please set the author email address."
+    else:
+        "Please add author_email field to setup.cfg"
 
 
 # Docs
@@ -106,3 +110,5 @@ def test_docs_conf_correct_year(doc_confpy):
 def test_docs_conf_author_changed(doc_confpy):
     if "author" in doc_confpy:
         assert False, "Please change the author in docs/conf.py"
+    else:
+        print("Please add an author variable to docs/conf.py")

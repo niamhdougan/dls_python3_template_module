@@ -26,12 +26,13 @@ def main():
     from dls_python3_template_module import __version__
 
     parser = ArgumentParser(
-        description="Command line tool adding dls_python3_template_module to python" \
-            " module"
+        description=
+        "Command line tool adding dls_python3_template_module to python module"
     )
     parser.add_argument(
-        "--version", action="store_true", help="Print the current version of" \
-            " dls_python3_template_module"
+        "--version",
+        action="store_true",
+        help="Print the current version of dls_python3_template_module"
     )
     parser.add_argument(
         "dir", nargs="?", help="The directory to add _version_git.py to"
