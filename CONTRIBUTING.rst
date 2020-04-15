@@ -29,23 +29,19 @@ Code Styling
 
 The code in this repository conforms to standards set by the following tools:
 
+- black_ for code formatting
 - flake8_ for style checks
-- flake8-black_ for code formatting
-- flake8-isort_ for import ordering
-- mypy_ for static type checking (for Python3.6+)
+- isort_ for import ordering
+- mypy_ for static type checking
 
+.. _black: https://github.com/psf/black
 .. _flake8: http://flake8.pycqa.org/en/latest/
-.. _flake8-isort: https://github.com/gforcada/flake8-isort
-.. _flake8-black: https://github.com/peterjc/flake8-black
+.. _isort: https://github.com/timothycrosley/isort
 .. _mypy: https://github.com/python/mypy
 
 These tests will be run on code when running ``pipenv run tests`` and also
 automatically at check in. Please read the tool documentation for details
 on how to fix the errors it reports.
-
-In order to disable these features, you will need to remove the
-appropriate items from the list of [dev-packages] in the Pipfile,
-as well as the corresponding sections and pytest flags in setup.cfg.
 
 Documentation
 -------------
