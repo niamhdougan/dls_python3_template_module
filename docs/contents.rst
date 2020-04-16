@@ -11,6 +11,5 @@ Contents
 
     reference/api
     reference/contributing
-    reference/release_notes
 
 * :ref:`genindex`
