@@ -7,7 +7,7 @@ Write some introductory paragraphs here. They should describe:
 - How it does it
 - Why you should use it
 
-If you have a diagram or screenshot, you can include it here
+If you have a diagram or screenshot, you can include it here.
 
 Installation
 ------------
@@ -33,7 +33,7 @@ introductory code here:
 
 Or if it is a commandline tool then you might put some example commands here::
 
-    dls-python3-template-module me --times=5
+    dls-python3-template-module person --times=2
 
 The rest of the docs
 --------------------
