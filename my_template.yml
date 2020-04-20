@@ -21,9 +21,8 @@ build_docs:
     - niamh
   script:
     - pipenv run docs
-    - echo ${DOCS_PUBLISH_ROOT}
-    # - mkdir -p ${DOCS_PUBLISH_ROOT}/latest
-    # - cp -rf build/html/* ${DOCS_PUBLISH_ROOT}/latest
+    - mkdir -p ${DOCS_PUBLISH_ROOT}/latest
+    - cp -rf build/html/* ${DOCS_PUBLISH_ROOT}/latest
 
 wheel_and_metadata_check:
   tags:
