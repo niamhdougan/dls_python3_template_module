@@ -65,4 +65,3 @@ You can build the docs from the project directory by running::
 
     $ pipenv run docs
     $ firefox build/html/index.html
-
