@@ -4,7 +4,8 @@ include:
     file: 'common_variables.yml'
 
 install_packages:
-  - pipenv install --dev
+  script:
+    - pipenv install --dev
 
 unit_tests_and_coverage:
   coverage: '/TOTAL.*\s+(\d+\%)/'
