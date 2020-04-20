@@ -1,14 +1,17 @@
+include:
+    - project: 'controls/reports/ci_templates'
+    ref: 0-14
+    file: 'common_variables.yml'
+
 rhel7_job:
   tags:
     - rhel7
-  variables:
-    DOCS_PUBLISH_ROOT: /dls/cs-www/reports/gitlab-ci/${CI_PROJECT_NAME}/docs
   coverage: '/TOTAL.*\s+(\d+\%)/'
   before_script:
     - pipenv install --dev
   script:
-    - pipenv run tests
     - pipenv run docs
+    - pipenv run tests
     - dls-python3 setup.py bdist_wheel
     - dls-py3 check --no-tag-check
   after_script:

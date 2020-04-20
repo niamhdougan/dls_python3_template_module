@@ -10,15 +10,14 @@ In order to disable these features, you will need to remove the
 appropriate items from the list of [dev-packages] in the Pipfile,
 as well as the corresponding sections and pytest flags in setup.cfg.
 
-
-
 Changes to make:
+
 - Write a README
 - Write tests
 - Write docs
 
 Tests
-~~~~~
+-----
 
 There are a set of tests in this template that are designed to fail if boilerplate
 text hasn't been removed and some general information variables about this module
