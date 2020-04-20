@@ -3,22 +3,29 @@ include:
     ref: 0-14
     file: 'common_variables.yml'
 
+stages:
+  - install
+  - test
+
 install_packages:
   tags:
     - niamh
+  stage: install
   script:
     - pipenv install --dev
 
 unit_tests_and_coverage:
   tags:
     - niamh
+  stage: test
   coverage: '/TOTAL.*\s+(\d+\%)/'
   script:
     - pipenv run tests
 
-build_docs:
+build_and_publish_docs:
   tags:
     - niamh
+  stage: test
   script:
     - pipenv run docs
     - mkdir -p ${DOCS_PUBLISH_ROOT}/latest
@@ -27,6 +34,7 @@ build_docs:
 wheel_and_metadata_check:
   tags:
     - niamh
+  stage: test
   script:
     - dls-python3 setup.py bdist_wheel
     - dls-py3 check --no-tag-check
