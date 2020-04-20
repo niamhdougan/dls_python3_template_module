@@ -1,20 +1,4 @@
 include:
-    - project: 'controls/reports/ci_templates'
-    ref: 0-14
-    file: 'common_variables.yml'
-
-rhel7_job:
-  tags:
-    - rhel7
-  coverage: '/TOTAL.*\s+(\d+\%)/'
-  before_script:
-    - pipenv install --dev
-  script:
-    - pipenv run docs
-    - pipenv run tests
-    - dls-python3 setup.py bdist_wheel
-    - dls-py3 check --no-tag-check
-  after_script:
-    - mkdir -p ${DOCS_PUBLISH_ROOT}/latest
-    - cp -rf build/html/* ${DOCS_PUBLISH_ROOT}/latest
-
+  - project: 'controls/reports/ci_templates'
+    ref: master
+    file: 'python3/dls_py3_template.yml'
