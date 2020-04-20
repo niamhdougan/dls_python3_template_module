@@ -4,6 +4,8 @@ include:
     file: 'common_variables.yml'
 
 install_packages:
+  tags:
+    - niamh
   script:
     - pipenv install --dev
 
